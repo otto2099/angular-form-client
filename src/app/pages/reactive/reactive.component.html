@@ -1,0 +1,134 @@
+<h4>Formularios <small> Clientes </small></h4>
+<hr>
+<form autocomplete="off" [formGroup]="forma" (ngSubmit)="guardar()">
+
+  <div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Nombre</label>
+      <div class="col">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Nombre"
+               formControlName="nombre"
+               [class.is-invalid]="nombreNoValido">
+        <small *ngIf="nombreNoValido" class="text-danger">
+          Ingrese 5 letras
+        </small>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Apellido</label>
+      <div class="col">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Apellido"
+               formControlName="apellido"
+               [class.is-invalid]="apellidoNoValido">
+        <small *ngIf="apellidoNoValido" class="text-danger">
+                Ingrese el apellido
+        </small>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Direccion</label>
+    <div class="col">
+
+      <input class="form-control"
+             type="text"
+             placeholder="Direccion"
+             formControlName="direccion">
+    </div>
+  </div>
+
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Correo</label>
+    <div class="col">
+
+      <input class="form-control"
+             type="email"
+             placeholder="Correo electrónico"
+             formControlName="correo"
+             [class.is-invalid]="correoNoValido">
+      <small *ngIf="correoNoValido" class="text-danger">
+              Ingrese el correo
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Estado civil</label>
+    <div class="col">
+      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option selected>Seleccione estado civil</option>
+        <option value="1">Soltero</option>
+        <option value="2">Casado</option>
+        <option value="3">Viudo</option>
+        <option value="4">Divorciado</option>
+
+      </select>
+     
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Telefono</label>
+    <div class="col">
+
+      <input class="form-control"
+             type="text"
+             placeholder="Telefono"
+             formControlName="telefono">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Pais</label>
+    <div class="col">
+      <select (change)="cargarEstasdos($event.target.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option selected>Seleccione pais</option>
+        <option [value] = "item.name" *ngFor="let item of paises">{{item.name}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Departamento</label>
+    <div class="col">
+      <select  (change)="cargarCiudades($event.target.value)" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option selected>Seleccione departamento</option>
+        <option [value] = "item.state_name" *ngFor="let item of estados">{{item.state_name}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Ciudad</label>
+    <div class="col">
+      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option selected>Seleccione ciudad</option>
+        <option [value] = "item.city_name" *ngFor="let item of ciudades">{{item.city_name}}</option>
+
+
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col">
+      <button type="submit" class="btn btn-outline-primary btn-block">
+        Guardar
+      </button>
+    </div>
+  </div>
+
+</form>
+
